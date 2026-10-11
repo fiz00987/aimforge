@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b13">
+  <meta name="description" content="AimForge is a locked, focused aim routine and consistency tracker for serious Valorant players.">
+  <title>AimForge — Valorant Aim Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#today" aria-label="AimForge home">
+        <span class="brand-mark"><span></span><span></span><span></span></span>
+        <span><strong>AIMFORGE</strong><small>precision over volume</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-link active" data-view="today" type="button">Today <span class="nav-pip"></span></button>
+        <button class="nav-link" data-view="progress" type="button">Progress <span class="nav-pip"></span></button>
+      </nav>
+      <div class="topbar-meta">
+        <span class="status-dot"></span><span id="sync-label">Saved locally</span>
+        <span class="streak-chip"><span>✦</span><b id="top-streak">0</b> day streak</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="view active" id="view-today" aria-labelledby="today-heading">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="eyebrow-line"></span> ASCENDANT+ ROUTINE · 20 MIN</div>
+            <h1 id="today-heading">Build the aim<br><em>you can trust.</em></h1>
+            <p>A short, high-signal routine for players who already know the basics. Every drill has a job. Every rep has a standard.</p>
+            <div class="hero-actions">
+              <button class="primary-btn" id="hero-start" type="button"><span class="play-icon">▶</span> Start today’s routine</button>
+              <span class="hero-note"><b>5 drills</b><span>·</span><b>20 min</b><span>·</span><b>no skips</b></span>
+            </div>
+          </div>
+          <div class="hero-orbit" aria-hidden="true">
+            <div class="orbit-ring ring-one"></div><div class="orbit-ring ring-two"></div>
+            <div class="target target-one"></div><div class="target target-two"></div><div class="target target-three"></div>
+            <div class="orbit-core"><span>20</span><small>MINUTES</small></div>
+          </div>
+        </div>
+
+        <div class="metric-grid" aria-label="Training summary">
+          <article class="metric-card accent-card"><span class="metric-label">Current streak</span><strong id="metric-streak">0</strong><span class="metric-foot">days in a row</span><span class="metric-glyph">✦</span></article>
+          <article class="metric-card"><span class="metric-label">This month</span><strong id="metric-month">0<span class="metric-unit"> / 20</span></strong><span class="metric-foot">sessions completed</span><div class="mini-progress"><i id="month-progress"></i></div></article>
+          <article class="metric-card"><span class="metric-label">Total focus</span><strong id="metric-minutes">0</strong><span class="metric-foot">minutes forged</span><span class="metric-glyph muted">◷</span></article>
+          <article class="metric-card"><span class="metric-label">Best streak</span><strong id="metric-best">0</strong><span class="metric-foot">personal record</span><span class="metric-glyph muted">↗</span></article>
+        </div>
+
+        <div class="section-heading routine-heading">
+          <div><span class="section-kicker">THE DAILY BLOCK</span><h2>Precision routine</h2></div>
+          <div class="routine-total"><span id="routine-complete-count">0 / 5</span><small>DRILLS COMPLETE</small></div>
+        </div>
+
+        <div class="routine-layout">
+          <aside class="routine-rail" aria-label="Routine drills">
+            <div class="rail-intro"><span class="rail-label">LOCKED FLOW</span><p>Finish the current drill to unlock the next. No cherry-picking reps.</p></div>
+            <div id="routine-list" class="routine-list"></div>
+            <div class="rail-standard"><span>THE STANDARD</span><p>Stop when the timer ends. Do not add volume when your crosshair quality drops.</p></div>
+          </aside>
+
+          <section class="session-panel" aria-live="polite">
+            <div id="session-content"></div>
+          </section>
+        </div>
+
+        <section class="principles-section">
+          <div class="section-heading"><div><span class="section-kicker">HOW TO USE IT</span><h2>Rules that make reps count</h2></div></div>
+          <div class="principles-grid">
+            <article><span class="principle-number">01</span><h3>Quality before speed</h3><p>Let the crosshair arrive. A clean first bullet teaches more than a frantic ten.</p></article>
+            <article><span class="principle-number">02</span><h3>Reset after every miss</h3><p>Do not chase a bad target. Re-center, breathe, then take the next rep.</p></article>
+            <article><span class="principle-number">03</span><h3>Log the day</h3><p>Consistency beats a heroic 90-minute session once a week. Protect the streak.</p></article>
+          </div>
+        </section>
+      </section>
+
+      <section class="view" id="view-progress" aria-labelledby="progress-heading">
+        <div class="progress-hero">
+          <div><span class="eyebrow"><span class="eyebrow-line"></span> LONG GAME</span><h1 id="progress-heading">Your consistency<br><em>is the advantage.</em></h1><p>Review the work. Adjust the routine only after you have enough clean data.</p></div>
+          <div class="progress-total"><span>Total sessions</span><strong id="progress-total-sessions">0</strong><small>since your first rep</small></div>
+        </div>
+        <div class="period-switcher" role="group" aria-label="Progress time period"><button class="period-btn active" data-period="month" type="button">This month</button><button class="period-btn" data-period="year" type="button">This year</button></div>
+        <div class="progress-summary-grid">
+          <article class="progress-stat"><span>Sessions</span><strong id="period-sessions">0</strong><small id="period-sessions-note">of 20 target</small></article>
+          <article class="progress-stat"><span>Focus time</span><strong id="period-minutes">0m</strong><small>in timed drills</small></article>
+          <article class="progress-stat"><span>Days trained</span><strong id="period-days">0</strong><small id="period-days-note">unique days</small></article>
+          <article class="progress-stat"><span>Completion rate</span><strong id="period-rate">0%</strong><small>of calendar days</small></article>
+        </div>
+        <div class="progress-layout">
+          <section class="panel-card heatmap-panel"><div class="panel-title"><div><span class="section-kicker">LAST 12 MONTHS</span><h2>Training heatmap</h2></div><span class="heat-legend"><i class="heat-0"></i><i class="heat-1"></i><i class="heat-2"></i><i class="heat-3"></i></span></div><div id="heatmap" class="heatmap" aria-label="Training history heatmap"></div><div class="heatmap-labels"><span>Less</span><span>More</span></div></section>
+          <section class="panel-card week-panel"><div class="panel-title"><div><span class="section-kicker">RHYTHM</span><h2>Last 7 days</h2></div><span class="panel-icon">◒</span></div><div id="week-bars" class="week-bars"></div></section>
+        </div>
+        <section class="panel-card history-panel"><div class="panel-title"><div><span class="section-kicker">SESSION LOG</span><h2>Recent work</h2></div><button id="clear-history" class="text-btn" type="button">Reset history</button></div><div id="history-list" class="history-list"></div></section>
+      </section>
+    </main>
+    <footer><span>AIMFORGE / BUILT FOR THE RANGE</span><span>Local-first · Your data stays on this device</span></footer>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
